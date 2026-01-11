@@ -5,6 +5,8 @@ Paralelno vrednovanje opcija Monte Carlo metodom
 Predmet: Napredne tehnike programiranja
 Student: Kristijan Trnjanac
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Uvod i motivacija
 
 Monte Carlo metode predstavljaju osnovni alat u numeričkim finansijama kada analitičko rješenje nije jednostavno ili nije dostupno. Posebno su značajne kod vrednovanja Evropskih opcija, gdje se cijena finansijskog instrumenta dobija simulacijom velikog broja mogućih budućih scenarija kretanja cijene osnovne imovine.
@@ -12,6 +14,8 @@ Monte Carlo metode predstavljaju osnovni alat u numeričkim finansijama kada ana
 U ovom projektu razmatra se problem numeričkog određivanja cijene evropskih call i put opcija nad akcijama sa američkog tržišta. Kretanje cijene modeluje se stohastičkim procesom, dok se krajnja vrijednost opcije procjenjuje statističkom obradom rezultata simulacija.
 
 Zbog potrebe za velikim brojem simulacija, Monte Carlo pristup brzo postaje računski zahtjevan. Međutim, pošto su pojedinačne simulacione putanje nezavisne jedna od druge, problem je izuzetno pogodan za paralelno izvršavanje.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Predmet i obuhvat projekta
 
@@ -31,6 +35,8 @@ Kvantitativna analiza dobijenih ubrzanja
 Grafički prikaz rezultata simulacija i performansi
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Matematički model
 
@@ -45,9 +51,12 @@ Evropska put opcija
 Istorijski podaci sa američkog tržišta koriste se isključivo za procjenu parametara modela (volatilnost), a ne za predviđanje budućih cijena.
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Implementacija
+IMPLEMENTACIJA
+
+
 Python rješenje
 Sekvencijalna varijanta
 
@@ -89,6 +98,8 @@ Paralelizacija zasnovana na data-parallelism konceptu
 Automatsko upravljanje nitima i raspodjelom posla
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Vizualizacija rezultata
 
@@ -104,6 +115,8 @@ Grafici ubrzanja za sekvencijalne i paralelne verzije
 
 Svi rezultati se izvoze u statičke grafičke fajlove (PNG format).
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Analiza performansi
@@ -126,6 +139,8 @@ Jako skaliranje – konstantan obim posla
 Slabo skaliranje – obim posla raste sa brojem jezgara
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Promjenljivi parametri
 
@@ -137,6 +152,8 @@ Volatilnost
 
 Rok dospijeća opcije
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Testno okruženje
@@ -166,8 +183,10 @@ Python: 3.14
 Rust: 1.92
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Proširenje za diplomski rad
+
+PROŠIRENJE ZA DIPLOMSKI RAD
 
 
 
@@ -190,6 +209,9 @@ Analiza prosječnog gubitka u ekstremnim scenarijima
 Fokus na rep distribucije
 
 Veći računski zahtjevi i značaj paralelizacije
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Literatura i alati
