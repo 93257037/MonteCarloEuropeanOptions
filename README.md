@@ -3,6 +3,7 @@
 Paralelno vrednovanje opcija Monte Carlo metodom
 
 Predmet: Napredne tehnike programiranja
+
 Student: Kristijan Trnjanac
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
