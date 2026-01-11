@@ -1,6 +1,6 @@
 # MonteCarloEuropeanOptions
 
-Paralelno vrednovanje opcija Monte Carlo metodom
+Paralelno vrednovanje Evropskih opcija Monte Carlo metodom
 
 Predmet: Napredne tehnike programiranja
 
