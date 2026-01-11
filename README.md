@@ -7,7 +7,7 @@ Student: Kristijan Trnjanac
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Uvod i motivacija
+# Uvod i motivacija
 
 Monte Carlo metode predstavljaju osnovni alat u numeričkim finansijama kada analitičko rješenje nije jednostavno ili nije dostupno. Posebno su značajne kod vrednovanja Evropskih opcija, gdje se cijena finansijskog instrumenta dobija simulacijom velikog broja mogućih budućih scenarija kretanja cijene osnovne imovine.
 
@@ -17,7 +17,7 @@ Zbog potrebe za velikim brojem simulacija, Monte Carlo pristup brzo postaje rač
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Predmet i obuhvat projekta
+# Predmet i obuhvat projekta
 
 
 Projekat se bavi sledećim zadacima:
@@ -38,7 +38,7 @@ Grafički prikaz rezultata simulacija i performansi
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Matematički model
+# Matematički model
 
 Cijena osnovne imovine modeluje se pomoću geometrijskog Braunovog kretanja (GBM). Na osnovu simuliranih putanja cijene, određuje se isplata opcije na dan dospijeća, nakon čega se vrši diskontovanje i računanje očekivane vrijednosti.
 
@@ -54,7 +54,7 @@ Istorijski podaci sa američkog tržišta koriste se isključivo za procjenu par
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-IMPLEMENTACIJA
+# IMPLEMENTACIJA
 
 
 Python rješenje
@@ -70,7 +70,7 @@ Služi kao referentna implementacija za provjeru korektnosti
 
 
 
-Paralelizovana varijanta
+# Paralelizovana varijanta
 
 Biblioteka: multiprocessing
 
@@ -80,8 +80,9 @@ Rezultati se agregiraju u glavnom procesu
 
 
 
-Rust rješenje
-Sekvencijalna varijanta
+# Rust rješenje
+
+# Sekvencijalna varijanta
 
 Potpuna implementacija Monte Carlo algoritma u Rust-u
 
@@ -89,7 +90,7 @@ Eksplicitna kontrola nad iteracijama i memorijom
 
 
 
-Paralelizovana varijanta
+# Paralelizovana varijanta
 
 Biblioteka: Rayon
 
@@ -101,7 +102,7 @@ Automatsko upravljanje nitima i raspodjelom posla
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Vizualizacija rezultata
+# Vizualizacija rezultata
 
 Grafički prikaz rezultata realizovan je u Rust okruženju korišćenjem biblioteke Plotters.
 
@@ -119,8 +120,10 @@ Svi rezultati se izvoze u statičke grafičke fajlove (PNG format).
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Analiza performansi
-Mjerni kriterijumi
+# Analiza performansi
+
+
+# Mjerni kriterijumi
 
 Ukupno vrijeme izvršavanja
 
@@ -142,7 +145,7 @@ Slabo skaliranje – obim posla raste sa brojem jezgara
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Promjenljivi parametri
+# Promjenljivi parametri
 
 Broj Monte Carlo simulacija
 
@@ -156,7 +159,7 @@ Rok dospijeća opcije
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Testno okruženje
+# Testno okruženje
 
 Eksperimenti su izvršeni na sljedećim konfiguracijama:
 
@@ -186,7 +189,7 @@ Rust: 1.92
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-PROŠIRENJE ZA DIPLOMSKI RAD
+# PROŠIRENJE ZA DIPLOMSKI RAD
 
 
 
@@ -214,7 +217,7 @@ Veći računski zahtjevi i značaj paralelizacije
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Literatura i alati
+# Literatura i alati
 
 Monte Carlo simulacije u finansijama
 
