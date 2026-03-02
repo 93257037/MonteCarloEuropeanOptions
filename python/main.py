@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import sys
 import time
+import multiprocessing as mp
 
 from data_fetch import fetch_history, estimate_annual_volatility, get_current_price
-from io_utils import save_simulation_results
+from io_utils import save_simulation_results, append_timing_result
 from monte_carlo import price_european_option_mc
+from parallel_mc import price_european_option_mc_parallel
 
 
 def ask_float(prompt: str, default: float | None = None) -> float:
@@ -31,7 +33,7 @@ def ask_int(prompt: str, default: int | None = None) -> int:
 
 
 def main() -> None:
-    print(" Monte Carlo European Options (Python – sequential) ")
+    print(" Monte Carlo European Options (Python – sequential + parallel) ")
 
     ticker = input("Ticker: ").strip().upper()
     if not ticker:
@@ -83,10 +85,20 @@ def main() -> None:
         n_paths=n_paths,
         option_type=option_type,
     )
-    elapsed = time.perf_counter() - start
+    elapsed_seq = time.perf_counter() - start
 
     print(f"\nProcijenjena cijena {option_type.upper()} opcije na {ticker}: {price:.4f}")
-    print(f"Vreme izvođenja simulacije (sekvencijalno): {elapsed:.6f} sekundi")
+    print(f"Vreme izvođenja simulacije (sekvencijalno): {elapsed_seq:.6f} sekundi")
+
+    timings_path = append_timing_result(
+        output_file="../data/timings_python.csv",
+        language="python",
+        impl_type="sequential",
+        ticker=ticker,
+        n_paths=n_paths,
+        n_workers=1,
+        elapsed=elapsed_seq,
+    )
 
     output_path = save_simulation_results(
         output_dir="../data",
@@ -95,6 +107,48 @@ def main() -> None:
         payoffs=payoffs,
     )
     print(f"file location: {output_path}")
+
+    # PARALLEL IMPLEMENTATION (multiprocessing)
+    n_workers_default = mp.cpu_count()
+    n_workers = ask_int(
+        f"Broj procesa za paralelnu verziju (default = broj jezgara = {n_workers_default})",
+        default=n_workers_default,
+    )
+
+    print("Starting (paralelno, multiprocessing)...")
+    start_par = time.perf_counter()
+    price_par = price_european_option_mc_parallel(
+        s0=s0,
+        k=k,
+        r=r,
+        sigma=sigma,
+        t=t,
+        n_paths=n_paths,
+        option_type=option_type,
+        n_workers=n_workers,
+    )
+    elapsed_par = time.perf_counter() - start_par
+
+    print(f"\nProcijenjena cijena {option_type.upper()} opcije (paralelno) na {ticker}: {price_par:.4f}")
+    print(f"Vreme izvođenja simulacije (paralelno): {elapsed_par:.6f} sekundi")
+
+    timings_path = append_timing_result(
+        output_file="../data/timings_python.csv",
+        language="python",
+        impl_type="parallel_mp",
+        ticker=ticker,
+        n_paths=n_paths,
+        n_workers=n_workers,
+        elapsed=elapsed_par,
+    )
+
+    if elapsed_par > 0.0:
+        speedup = elapsed_seq / elapsed_par
+        efficiency = speedup / n_workers if n_workers > 0 else 0.0
+        print(f"\nSpeedup (t_seq / t_par) = {speedup:.4f}")
+        print(f"Efikasnost (speedup / broj procesa) = {efficiency:.4f}")
+
+    print(f"\nTimings CSV (za jaku/slabu skalabilnost): {timings_path}")
 
 
 if __name__ == "__main__":
