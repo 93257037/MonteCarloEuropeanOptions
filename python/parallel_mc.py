@@ -12,11 +12,7 @@ from monte_carlo import simulate_terminal_prices, european_payoff
 def _worker_chunk(
     args: Tuple[float, float, float, float, int, float, str],
 ) -> Tuple[float, float, int]:
-    """
-    Worker funkcija za jedan proces:
-    vraća zbir diskontovanih isplata, zbir kvadrata i broj putanja.
-    Ovo je dovoljno da glavna nit izračuna srednju vrednost i varijansu.
-    """
+   
     s0, r, sigma, t, n_paths, k, option_type = args
     s_t = simulate_terminal_prices(s0, r, sigma, t, n_paths)
     payoffs = european_payoff(s_t, k, option_type=option_type)
@@ -36,13 +32,7 @@ def price_european_option_mc_parallel(
     option_type: str = "call",
     n_workers: int | None = None,
 ) -> float:
-    """
-    Paralelno vrednovanje evropske opcije Monte Carlo metodom
-    korišćenjem multiprocessing.Pool.
-
-    Vraća samo procenjenu cenu (bez čuvanja svih pojedinačnih putanja),
-    što je tipično dovoljno za merenje performansi i skaliranje.
-    """
+    
     if n_workers is None or n_workers <= 0:
         n_workers = mp.cpu_count()
 
